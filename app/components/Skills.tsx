@@ -2,14 +2,17 @@ import { motion } from 'framer-motion'
 import { Parallax } from 'react-scroll-parallax'
 
 const skills = [
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
+    { name: 'Web - JS/CSS/HTML', level: 90 },
+    { name: 'Next.js', level: 85 },
+    { name: 'React', level: 80 },
     { name: 'Node.js', level: 80 },
     { name: 'Python', level: 85 },
-    { name: 'SQL', level: 75 },
-    { name: 'MongoDB', level: 70 },
-    { name: 'GraphQL', level: 65 },
-    { name: 'Docker', level: 60 },
+    { name: 'SQL', level: 70 },
+    { name: 'C', level: 70 },
+    { name: 'C#', level: 65 },
+    { name: 'C++', level: 60 },
+    { name: 'PHP', level: 65 },
+    { name: 'Docker', level: 40 },
 ]
 
 const Skills = () => {
