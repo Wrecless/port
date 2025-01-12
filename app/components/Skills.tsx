@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Parallax } from 'react-scroll-parallax'
 
 const skills = [
     { name: 'Web - JS/CSS/HTML', level: 90 },
@@ -18,7 +17,6 @@ const skills = [
 const Skills = () => {
     return (
         <section id="skills" className="py-20">
-            <Parallax translateY={['-50px', '50px']}>
                 <motion.h2
                     className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text"
                     initial={{ opacity: 0, y: 50 }}
@@ -27,10 +25,8 @@ const Skills = () => {
                 >
                     Skills
                 </motion.h2>
-            </Parallax>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {skills.map((skill, index) => (
-                    <Parallax key={skill.name} translateY={[`${25 + index * 10}px`, `-${25 + index * 10}px`]}>
                         <motion.div
                             className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg"
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -50,7 +46,6 @@ const Skills = () => {
                                 ></motion.div>
                             </div>
                         </motion.div>
-                    </Parallax>
                 ))}
             </div>
         </section>

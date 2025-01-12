@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Parallax } from 'react-scroll-parallax'
 import { Send } from 'lucide-react'
 
 const Contact = () => {
@@ -40,7 +39,7 @@ const Contact = () => {
 
     return (
         <section id="contact" className="py-20">
-            <Parallax translateY={['-50px', '50px']}>
+
                 <motion.h2
                     className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text"
                     initial={{ opacity: 0, y: 50 }}
@@ -49,7 +48,7 @@ const Contact = () => {
                 >
                     Lets Connect
                 </motion.h2>
-            </Parallax>
+
             <motion.form
                 className="max-w-lg mx-auto"
                 onSubmit={handleSubmit}

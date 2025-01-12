@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
-import { Parallax } from 'react-scroll-parallax'
 
 const About = () => {
     return (
         <section id="about" className="py-20">
-            <Parallax translateY={['-50px', '50px']}>
+
                 <motion.h2
                     className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text"
                     initial={{ opacity: 0, y: 50 }}
@@ -13,9 +12,9 @@ const About = () => {
                 >
                     About Me
                 </motion.h2>
-            </Parallax>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <Parallax translateY={['25px', '-25px']}>
+
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -36,8 +35,7 @@ const About = () => {
                             to grow as a developer and contribute to the ever-evolving world of technology.
                         </p>
                     </motion.div>
-                </Parallax>
-                <Parallax translateY={['50px', '-50px']}>
+
                     <motion.div
                         className="grid grid-cols-1 md:grid-cols-2 gap-6"
                         initial={{ opacity: 0, x: 50 }}
@@ -72,7 +70,6 @@ const About = () => {
                             </p>
                         </div>
                     </motion.div>
-                </Parallax>
             </div>
         </section>
     )

@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
-import { Parallax } from 'react-scroll-parallax'
 import Image from 'next/image'
 
 const Hero = () => {
     return (
         <div className="min-h-screen flex items-center justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <Parallax translateY={['-50px', '50px']}>
+
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -20,8 +19,8 @@ const Hero = () => {
                             className="rounded-full border-4 border-teal-400 shadow-lg"
                         />
                     </motion.div>
-                </Parallax>
-                <Parallax translateY={['50px', '-50px']}>
+
+
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -66,7 +65,7 @@ const Hero = () => {
                             </motion.a>
                         </div>
                     </motion.div>
-                </Parallax>
+
             </div>
         </div>
     )

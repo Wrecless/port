@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Parallax } from 'react-scroll-parallax'
 import { ExternalLink, Github } from 'lucide-react'
+import React from "react";
+import Link from 'next/link'
 
 const projects = [
     {
@@ -27,35 +28,34 @@ const projects = [
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20">
-            <Parallax translateY={['-50px', '50px']}>
+            <section id="projects" className="py-20">
                 <motion.h2
                     className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{opacity: 0, y: 50}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.5}}
                 >
                     Projects
                 </motion.h2>
-            </Parallax>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project, index) => (
-                    <Parallax key={project.title} translateY={[`${50 + index * 25}px`, `-${50 + index * 25}px`]}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, index) => (
                         <motion.div
+                            key={project.title}
                             className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            initial={{opacity: 0, y: 50}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.5, delay: index * 0.1}}
                         >
-                            <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
+                            <img src={project.image} alt={project.title} className="w-full h-48 object-cover"/>
                             <div className="p-6">
                                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
                                 <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tags.map((tag) => (
-                                        <span key={tag} className="bg-teal-100 dark:bg-teal-800 text-teal-800 dark:text-teal-100 px-2 py-1 rounded text-sm">
-                      {tag}
-                    </span>
+                                        <span key={tag}
+                                              className="bg-teal-100 dark:bg-teal-800 text-teal-800 dark:text-teal-100 px-2 py-1 rounded text-sm">
+                    {tag}
+                  </span>
                                     ))}
                                 </div>
                                 <div className="flex justify-between">
@@ -65,7 +65,7 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center text-teal-500 hover:text-teal-600"
                                     >
-                                        <Github className="w-5 h-5 mr-2" />
+                                        <Github className="w-5 h-5 mr-2"/>
                                         GitHub
                                     </a>
                                     <a
@@ -74,17 +74,26 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center text-blue-500 hover:text-blue-600"
                                     >
-                                        <ExternalLink className="w-5 h-5 mr-2" />
+                                        <ExternalLink className="w-5 h-5 mr-2"/>
                                         Live Demo
                                     </a>
                                 </div>
                             </div>
                         </motion.div>
-                    </Parallax>
-                ))}
-            </div>
-        </section>
+                    ))}
+                </div>
+                <div className="mt-12 text-center">
+                    <Link href="/more-projects" passHref>
+                        <motion.button
+                            className="px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-500 text-white rounded-full hover:from-teal-500 hover:to-blue-600 transition-colors duration-300"
+                            whileHover={{scale: 1.05}}
+                            whileTap={{scale: 0.95}}
+                        >
+                            View More Projects
+                        </motion.button>
+                    </Link>
+                </div>
+            </section>
     )
 }
-
 export default Projects
