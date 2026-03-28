@@ -28,6 +28,7 @@ export default function Portfolio() {
       el => el && el.offsetTop <= scrollY + window.innerHeight / 3
     )
     if (currentSection !== -1) setActiveSection(sections[currentSection])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollY])
 
   return (
