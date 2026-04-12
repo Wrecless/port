@@ -10,13 +10,14 @@ type HeaderProps = {
 const navLabels: Record<string, string> = {
   hero: 'Home',
   about: 'About',
+  projects: 'Projects',
   skills: 'Skills',
   achievements: 'Achievements',
   contact: 'Contact',
 }
 
 const Header: React.FC<HeaderProps> = ({ activeSection }) => {
-  const sections = ['hero', 'about', 'skills', 'achievements', 'contact']
+  const sections = ['hero', 'about', 'projects', 'skills', 'achievements', 'contact']
 
   return (
     <header

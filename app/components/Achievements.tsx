@@ -29,7 +29,7 @@ const achievements = [
 const Achievements = () => {
   return (
     <section id="achievements" className="relative py-24 overflow-hidden">
-      <span className="section-num">03</span>
+      <span className="section-num">04</span>
 
       <motion.div
         className="section-marker"

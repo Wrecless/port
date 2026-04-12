@@ -29,7 +29,7 @@ const educationSkills = [
 const Skills = () => {
   return (
     <section id="skills" className="relative py-24 overflow-hidden">
-      <span className="section-num">02</span>
+      <span className="section-num">03</span>
 
       <motion.div
         className="section-marker"

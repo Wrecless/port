@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
+import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
@@ -14,7 +15,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('hero')
   const [scrollY, setScrollY] = useState(0)
 
-  const sections = ['hero', 'about', 'skills', 'achievements', 'contact']
+  const sections = ['hero', 'about', 'projects', 'skills', 'achievements', 'contact']
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -46,6 +47,7 @@ export default function Portfolio() {
           </motion.section>
         </AnimatePresence>
         <About />
+        <Projects />
         <Skills />
         <Achievements />
         <Contact />

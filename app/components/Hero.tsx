@@ -16,14 +16,25 @@ const Hero = () => {
 
         {/* Text content */}
         <div className="md:col-span-3 order-2 md:order-1">
-          <motion.p
-            className="section-marker mb-8"
+          <motion.div
+            className="flex flex-wrap items-center gap-4 mb-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            PORTFOLIO &middot; 2025
-          </motion.p>
+            <p className="section-marker mb-0">PORTFOLIO &middot; 2025</p>
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono"
+              style={{
+                background: 'rgba(34, 197, 94, 0.07)',
+                border: '1px solid rgba(34, 197, 94, 0.2)',
+                fontFamily: 'var(--font-geist-mono, monospace)',
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-green-400">Open to opportunities</span>
+            </span>
+          </motion.div>
 
           <motion.h1
             className="font-display text-[clamp(3.5rem,9vw,7rem)] leading-none mb-8"
@@ -102,8 +113,18 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <div className="relative">
+            {/* Ambient glow */}
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at center, rgba(29,214,197,0.18) 0%, rgba(79,142,247,0.08) 45%, transparent 70%)',
+                transform: 'scale(1.6)',
+                filter: 'blur(24px)',
+                zIndex: 0,
+              }}
+            />
             {/* Animated gradient ring */}
-            <div className="photo-ring">
+            <div className="photo-ring" style={{ position: 'relative', zIndex: 1 }}>
               <div className="rounded-full overflow-hidden w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 relative bg-[#0e1117]">
                 <Image
                   src="/2.jpg"

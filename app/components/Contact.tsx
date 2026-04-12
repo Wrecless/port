@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
-      <span className="section-num">04</span>
+      <span className="section-num">05</span>
 
       <motion.div
         className="section-marker"
