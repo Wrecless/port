@@ -101,7 +101,7 @@ const About = () => {
             >
               <div className="mb-3">{item.icon}</div>
               <h3 className="text-sm font-semibold text-[#dde4f0] mb-1.5">{item.title}</h3>
-              <p className="text-xs text-[#5e6b7e] leading-relaxed">{item.desc}</p>
+              <p className="text-sm text-[#8892a4] leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>

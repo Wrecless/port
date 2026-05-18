@@ -8,7 +8,7 @@ const contactEmail = 'nintah85@gmail.com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'draft' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'draft'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -180,9 +180,6 @@ const Contact = () => {
           )}
           {status === 'draft' && (
             <p className="text-sm text-[#1dd6c5]">Email draft opened. Send it from your email app to finish.</p>
-          )}
-          {status === 'error' && (
-            <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
           )}
         </form>
       </motion.div>

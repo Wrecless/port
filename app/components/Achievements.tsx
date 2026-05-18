@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, GraduationCap, Rocket, School } from 'lucide-react'
+import { GraduationCap, Rocket, School } from 'lucide-react'
 
 const impactItems = [
   {
@@ -100,7 +100,6 @@ const Achievements = () => {
                   <p className="font-display text-3xl md:text-4xl leading-none" style={{ color: item.accent }}>
                     {item.metric}
                   </p>
-                  <ArrowUpRight className="w-4 h-4 mt-2 ml-auto text-[#3d4a5a]" />
                 </div>
               </motion.article>
             )
