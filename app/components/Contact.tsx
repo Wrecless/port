@@ -4,12 +4,23 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Send } from 'lucide-react'
 
+const contactEmail = 'nintah85@gmail.com'
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'draft' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const openEmailDraft = () => {
+    const subject = encodeURIComponent(`Portfolio enquiry from ${formData.name}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    )
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,10 +36,12 @@ const Contact = () => {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
       } else {
-        setStatus('error')
+        openEmailDraft()
+        setStatus('draft')
       }
     } catch {
-      setStatus('error')
+      openEmailDraft()
+      setStatus('draft')
     }
   }
 
@@ -121,11 +134,14 @@ const Contact = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Send className="w-4 h-4" />
-            {status === 'sending' ? 'Sending…' : 'Send Message'}
+            {status === 'sending' ? 'Sending...' : 'Send Message'}
           </motion.button>
 
           {status === 'success' && (
             <p className="text-sm text-[#1dd6c5]">Message sent! I&apos;ll be in touch.</p>
+          )}
+          {status === 'draft' && (
+            <p className="text-sm text-[#1dd6c5]">Email draft opened. Send it from your email app to finish.</p>
           )}
           {status === 'error' && (
             <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
