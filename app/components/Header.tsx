@@ -1,6 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 
 type HeaderProps = {
@@ -12,12 +14,18 @@ const navLabels: Record<string, string> = {
   about: 'About',
   projects: 'Projects',
   skills: 'Skills',
-  achievements: 'Achievements',
+  achievements: 'Impact',
   contact: 'Contact',
 }
 
 const Header: React.FC<HeaderProps> = ({ activeSection }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const sections = ['hero', 'about', 'projects', 'skills', 'achievements', 'contact']
+
+  const scrollToSection = (section: string) => {
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' })
+    setIsMenuOpen(false)
+  }
 
   return (
     <header
@@ -47,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           {sections.map((section) => (
             <li key={section}>
               <button
-                onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection(section)}
                 className={`relative text-sm transition-colors duration-200 pb-0.5 ${
                   activeSection === section
                     ? 'text-[#1dd6c5]'
@@ -97,8 +105,49 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </a>
+          <button
+            type="button"
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#8892a4] hover:text-[#1dd6c5] hover:border-[#1dd6c5]/40 transition-colors duration-200"
+            onClick={() => setIsMenuOpen((current) => !current)}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </motion.div>
       </nav>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden border-t border-white/[0.05] bg-[#07090d]/95"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="container mx-auto px-4 py-4 grid gap-2">
+              {sections.map((section) => (
+                <button
+                  key={section}
+                  type="button"
+                  onClick={() => scrollToSection(section)}
+                  className={`flex items-center justify-between rounded-lg px-3 py-3 text-left text-sm transition-colors duration-200 ${
+                    activeSection === section
+                      ? 'bg-[#1dd6c5]/10 text-[#1dd6c5]'
+                      : 'text-[#8892a4] hover:bg-white/[0.04] hover:text-[#dde4f0]'
+                  }`}
+                >
+                  {navLabels[section]}
+                  <span className="font-mono text-xs text-[#3d4a5a]" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
+                    {String(sections.indexOf(section)).padStart(2, '0')}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

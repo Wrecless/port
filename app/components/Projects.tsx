@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const projects = [
   {
@@ -79,18 +80,19 @@ const Projects = () => {
         {projects.map((project, i) => (
           <motion.article
             key={project.title}
-            className="card overflow-hidden group"
+            className={`card overflow-hidden group ${i === 0 ? 'md:col-span-2 lg:grid lg:grid-cols-[1.15fr_0.85fr]' : ''}`}
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55, delay: 0.15 + i * 0.12 }}
           >
             {/* Image */}
-            <div className="relative h-48 overflow-hidden">
+            <div className={`relative overflow-hidden ${i === 0 ? 'h-64 lg:h-full lg:min-h-[24rem]' : 'h-48'}`}>
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
+                sizes={i === 0 ? '(min-width: 1024px) 58vw, (min-width: 768px) 100vw, 100vw' : '(min-width: 768px) 50vw, 100vw'}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Gradient overlay */}
@@ -106,15 +108,19 @@ const Projects = () => {
             </div>
 
             {/* Content */}
-            <div className="p-6">
+            <div className={i === 0 ? 'p-7 md:p-8 flex flex-col justify-center' : 'p-6'}>
               <p
                 className="text-xs font-mono tracking-widest uppercase mb-1.5"
                 style={{ color: project.accent, fontFamily: 'var(--font-geist-mono, monospace)' }}
               >
                 {project.subtitle}
               </p>
-              <h3 className="font-display text-2xl text-[#dde4f0] mb-3">{project.title}</h3>
-              <p className="text-[#5e6b7e] text-sm leading-relaxed mb-5">{project.description}</p>
+              <h3 className={`font-display text-[#dde4f0] mb-3 ${i === 0 ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>
+                {project.title}
+              </h3>
+              <p className={`text-[#5e6b7e] leading-relaxed mb-5 ${i === 0 ? 'text-base' : 'text-sm'}`}>
+                {project.description}
+              </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-6">
@@ -161,6 +167,22 @@ const Projects = () => {
           </motion.article>
         ))}
       </div>
+
+      <motion.div
+        className="mt-8 flex justify-start"
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.45, delay: 0.2 }}
+      >
+        <Link
+          href="/more-projects"
+          className="inline-flex items-center gap-2 text-sm text-[#8892a4] hover:text-[#1dd6c5] transition-colors duration-200"
+        >
+          View more projects
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
     </section>
   )
 }

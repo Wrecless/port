@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send } from 'lucide-react'
+import { ExternalLink, Github, Linkedin, Mail, Send } from 'lucide-react'
 
 const contactEmail = 'nintah85@gmail.com'
 
@@ -27,7 +27,7 @@ const Contact = () => {
     e.preventDefault()
     setStatus('sending')
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -71,12 +71,50 @@ const Contact = () => {
       </motion.h2>
 
       <motion.div
-        className="max-w-xl"
+        className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
+        <div className="space-y-6">
+          <div>
+            <p className="text-[#8892a4] text-base md:text-lg leading-relaxed">
+              Send a project brief, teaching collaboration, or developer opportunity. I read every message and usually reply within a couple of days.
+            </p>
+          </div>
+
+          <div className="grid gap-3">
+            <a
+              href={`mailto:${contactEmail}`}
+              className="card p-4 flex items-center gap-3 text-[#8892a4] hover:text-[#1dd6c5] transition-colors duration-200"
+            >
+              <Mail className="w-5 h-5 text-[#1dd6c5]" />
+              <span className="text-sm">{contactEmail}</span>
+            </a>
+            <a
+              href="https://github.com/Wrecless"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card p-4 flex items-center gap-3 text-[#8892a4] hover:text-[#dde4f0] transition-colors duration-200"
+            >
+              <Github className="w-5 h-5 text-[#5e6b7e]" />
+              <span className="text-sm">github.com/Wrecless</span>
+              <ExternalLink className="w-4 h-4 ml-auto" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/bruno-mata-41364b1b1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card p-4 flex items-center gap-3 text-[#8892a4] hover:text-[#1dd6c5] transition-colors duration-200"
+            >
+              <Linkedin className="w-5 h-5 text-[#4f8ef7]" />
+              <span className="text-sm">LinkedIn profile</span>
+              <ExternalLink className="w-4 h-4 ml-auto" />
+            </a>
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
             <label htmlFor="name" className="block text-xs font-mono tracking-widest uppercase text-[#5e6b7e] mb-2" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>

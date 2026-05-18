@@ -1,29 +1,57 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { BookOpen, Braces, Database, GitBranch, Layers, Server, Sparkles, Users } from 'lucide-react'
 
-const technicalSkills = [
-  'JavaScript / TypeScript',
-  'React & Next.js',
-  'Node.js',
-  'Python',
-  'SQL',
-  'HTML & CSS',
-  'C / C++ / C#',
-  'PHP',
-  'Docker',
-  'Git & GitHub',
+const skillGroups = [
+  {
+    title: 'Frontend Engineering',
+    level: 'Primary stack',
+    icon: Braces,
+    accent: '#1dd6c5',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    title: 'Backend & APIs',
+    level: 'Product-ready',
+    icon: Server,
+    accent: '#4f8ef7',
+    skills: ['Node.js', 'REST APIs', 'Python', 'Nodemailer'],
+  },
+  {
+    title: 'Data & Systems',
+    level: 'Applied fluency',
+    icon: Database,
+    accent: '#f7b955',
+    skills: ['SQL', 'Supabase', 'Schema design', 'Validation'],
+  },
+  {
+    title: 'Delivery Workflow',
+    level: 'Daily practice',
+    icon: GitBranch,
+    accent: '#9b87f5',
+    skills: ['GitHub', 'Vercel', 'Docker', 'CI checks'],
+  },
+  {
+    title: 'Curriculum Design',
+    level: 'Department level',
+    icon: BookOpen,
+    accent: '#1dd6c5',
+    skills: ['Lesson planning', 'Assessment', 'Learning games', 'KS3-KS5'],
+  },
+  {
+    title: 'Technical Leadership',
+    level: 'People + process',
+    icon: Users,
+    accent: '#4f8ef7',
+    skills: ['Team leadership', 'Mentoring', 'Strategy', 'Communication'],
+  },
 ]
 
-const educationSkills = [
-  'Curriculum Design',
-  'Head of Department',
-  'Classroom Technology',
-  'Student Assessment',
-  'Lesson Planning',
-  'Team Leadership',
-  'Problem-Based Learning',
-  'Pastoral Care',
+const focusAreas = [
+  { label: 'Build', value: 'full-stack apps', icon: Layers },
+  { label: 'Teach', value: 'clear CS concepts', icon: BookOpen },
+  { label: 'Improve', value: 'digital workflows', icon: Sparkles },
 ]
 
 const Skills = () => {
@@ -41,83 +69,92 @@ const Skills = () => {
         Skills
       </motion.div>
 
-      <motion.h2
-        className="font-display text-4xl md:text-5xl text-[#dde4f0] mb-14"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        What I bring<br />
-        <span className="italic text-[#1dd6c5]">to the table.</span>
-      </motion.h2>
+      <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <motion.h2
+            className="font-display text-4xl md:text-5xl text-[#dde4f0] mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            What I bring<br />
+            <span className="italic text-[#1dd6c5]">to the table.</span>
+          </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          <div className="grid gap-3">
+            {focusAreas.map((area, i) => {
+              const Icon = area.icon
 
-        {/* Technical */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#1dd6c5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-            <h3 className="text-xs font-mono tracking-widest uppercase text-[#1dd6c5]" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
-              Technical Stack
-            </h3>
+              return (
+                <motion.div
+                  key={area.label}
+                  className="flex items-center gap-4 border-l border-white/10 pl-4"
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: 0.18 + i * 0.06 }}
+                >
+                  <Icon className="w-5 h-5 text-[#1dd6c5]" />
+                  <div>
+                    <p className="text-xs font-mono tracking-widest uppercase text-[#5e6b7e]" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
+                      {area.label}
+                    </p>
+                    <p className="text-[#dde4f0]">{area.value}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
-          <div className="flex flex-wrap gap-2.5">
-            {technicalSkills.map((skill, i) => (
-              <motion.span
-                key={skill}
-                className="tag-tech px-3.5 py-1.5 text-sm text-[#8892a4] rounded-md cursor-default transition-all duration-200"
-                style={{ border: '1px solid rgba(29, 214, 197, 0.15)', background: 'rgba(29, 214, 197, 0.03)' }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.2 + i * 0.04 }}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {skillGroups.map((group, i) => {
+            const Icon = group.icon
+
+            return (
+              <motion.article
+                key={group.title}
+                className="card p-5"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: 0.15 + i * 0.06 }}
               >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+                <div className="flex items-start justify-between gap-4 mb-5">
+                  <div
+                    className="h-10 w-10 rounded-lg flex items-center justify-center"
+                    style={{ background: `${group.accent}12`, color: group.accent }}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <p
+                    className="text-[0.65rem] font-mono tracking-widest uppercase"
+                    style={{ color: group.accent, fontFamily: 'var(--font-geist-mono, monospace)' }}
+                  >
+                    {group.level}
+                  </p>
+                </div>
 
-        {/* Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#4f8ef7]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-            <h3 className="text-xs font-mono tracking-widest uppercase text-[#4f8ef7]" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
-              Education &amp; Leadership
-            </h3>
-          </div>
-          <div className="flex flex-wrap gap-2.5">
-            {educationSkills.map((skill, i) => (
-              <motion.span
-                key={skill}
-                className="tag-edu px-3.5 py-1.5 text-sm text-[#8892a4] rounded-md cursor-default transition-all duration-200"
-                style={{ border: '1px solid rgba(79, 142, 247, 0.15)', background: 'rgba(79, 142, 247, 0.03)' }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 + i * 0.04 }}
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-
+                <h3 className="text-lg font-semibold text-[#dde4f0] mb-4">{group.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2.5 py-1 text-xs rounded text-[#8892a4]"
+                      style={{
+                        border: `1px solid ${group.accent}22`,
+                        background: `${group.accent}08`,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
