@@ -17,6 +17,26 @@ const projects = [
     accent: '#1dd6c5',
   },
   {
+    title: 'Mr. Mata Learning Hub',
+    subtitle: 'Computer Science Learning Hub',
+    description:
+      'A classroom-friendly hub for practising computer science through focused games, including sorting algorithms, binary, logic, and computational mathematics challenges.',
+    image: '/mr-mata-learning-hub.png',
+    demo: 'https://mr-mata-learning-hub.vercel.app/',
+    tags: ['Next.js', 'Teaching Tools', 'Computer Science', 'Games'],
+    accent: '#4f8ef7',
+  },
+  {
+    title: 'Hugzy Designs',
+    subtitle: 'Custom 3D Printing Website',
+    description:
+      'A polished site for a custom 3D printing studio, showcasing lightboxes, portrait lamps, jewellery, fidget toys, keychains, and a custom order flow.',
+    image: '/hugzy-designs.png',
+    demo: 'https://hugzydesigns.vercel.app/',
+    tags: ['Next.js', 'Product Site', '3D Printing', 'Forms'],
+    accent: '#f7b955',
+  },
+  {
     title: 'Wrekify',
     subtitle: 'Music Streaming App',
     description:
@@ -25,7 +45,7 @@ const projects = [
     github: 'https://github.com/Wrecless/spotify-clone',
     demo: 'https://wrekify.vercel.app/',
     tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Supabase'],
-    accent: '#4f8ef7',
+    accent: '#9b87f5',
   },
 ]
 
@@ -115,15 +135,17 @@ const Projects = () => {
 
               {/* Links */}
               <div className="flex items-center gap-5">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#5e6b7e] hover:text-[#dde4f0] transition-colors duration-200"
-                >
-                  <Github className="w-4 h-4" />
-                  Source
-                </a>
+                {'github' in project && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-[#5e6b7e] hover:text-[#dde4f0] transition-colors duration-200"
+                  >
+                    <Github className="w-4 h-4" />
+                    Source
+                  </a>
+                )}
                 <a
                   href={project.demo}
                   target="_blank"
