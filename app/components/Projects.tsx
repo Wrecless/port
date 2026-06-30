@@ -37,17 +37,6 @@ const projects = [
     tags: ['Next.js', 'Product Site', '3D Printing', 'Forms'],
     accent: '#f7b955',
   },
-  {
-    title: 'Wrekify',
-    subtitle: 'Music Streaming App',
-    description:
-      'A Spotify-inspired platform that lets users upload, stream, and manage their music library seamlessly. Features music playback, playlists, and a sleek responsive UI.',
-    image: '/img.png',
-    github: 'https://github.com/Wrecless/spotify-clone',
-    demo: 'https://wrekify.vercel.app/',
-    tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Supabase'],
-    accent: '#9b87f5',
-  },
 ]
 
 const Projects = () => {

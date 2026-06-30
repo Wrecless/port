@@ -139,7 +139,7 @@ const Hero = () => {
 
             {/* Floating badge — First Class */}
             <motion.div
-              className="absolute -bottom-2 -left-4 md:-left-8 card px-3 py-2 text-xs"
+              className="absolute -bottom-2 -left-4 md:-left-8 z-20 card px-3 py-2 text-xs"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.5 }}
@@ -150,7 +150,7 @@ const Hero = () => {
 
             {/* Floating badge — HoD */}
             <motion.div
-              className="absolute -top-2 -right-4 md:-right-8 card px-3 py-2 text-xs"
+              className="absolute -top-2 -right-4 md:-right-8 z-20 card px-3 py-2 text-xs"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.5 }}
