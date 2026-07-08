@@ -9,6 +9,36 @@ const roles = [
   { num: '03', label: 'Head of Department' },
 ]
 
+const floatingAchievements = [
+  {
+    label: 'First Class Honours',
+    accent: '#1dd6c5',
+    className: '-bottom-2 -left-4 md:-left-10',
+    initialY: 10,
+    path: { x: [0, -10, 6, 0], y: [0, -16, -8, 0], rotate: [-1, 1.5, -0.5, -1] },
+    duration: 8,
+    delay: 1.1,
+  },
+  {
+    label: 'Head of Department',
+    accent: '#4f8ef7',
+    className: '-top-2 -right-4 md:-right-10',
+    initialY: -10,
+    path: { x: [0, 12, -4, 0], y: [0, 14, 6, 0], rotate: [1, -1.5, 0.75, 1] },
+    duration: 9,
+    delay: 1.2,
+  },
+  {
+    label: '8+ Learning Tools',
+    accent: '#f7b955',
+    className: 'top-1/2 -right-6 md:-right-16 hidden sm:block',
+    initialY: 6,
+    path: { x: [0, 8, -8, 0], y: [0, -12, 10, 0], rotate: [0.5, 2, -1, 0.5] },
+    duration: 10,
+    delay: 1.3,
+  },
+]
+
 const Hero = () => {
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 pb-12">
@@ -137,27 +167,51 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Floating badge — First Class */}
-            <motion.div
-              className="absolute -bottom-2 -left-4 md:-left-8 z-20 card px-3 py-2 text-xs"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.5 }}
-            >
-              <span className="text-[#1dd6c5] font-mono mr-2" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>✦</span>
-              <span className="text-[#8892a4]">First Class Honours</span>
-            </motion.div>
-
-            {/* Floating badge — HoD */}
-            <motion.div
-              className="absolute -top-2 -right-4 md:-right-8 z-20 card px-3 py-2 text-xs"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-            >
-              <span className="text-[#4f8ef7] font-mono mr-2" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>✦</span>
-              <span className="text-[#8892a4]">Head of Department</span>
-            </motion.div>
+            {floatingAchievements.map((achievement) => (
+              <motion.div
+                key={achievement.label}
+                className={`absolute z-20 card px-3 py-2 text-xs whitespace-nowrap ${achievement.className}`}
+                initial={{ opacity: 0, y: achievement.initialY, scale: 0.96 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  ...achievement.path,
+                }}
+                transition={{
+                  opacity: { delay: achievement.delay, duration: 0.45 },
+                  scale: { delay: achievement.delay, duration: 0.45 },
+                  x: {
+                    delay: achievement.delay,
+                    duration: achievement.duration,
+                    repeat: Infinity,
+                    repeatType: 'mirror',
+                    ease: 'easeInOut',
+                  },
+                  y: {
+                    delay: achievement.delay,
+                    duration: achievement.duration,
+                    repeat: Infinity,
+                    repeatType: 'mirror',
+                    ease: 'easeInOut',
+                  },
+                  rotate: {
+                    delay: achievement.delay,
+                    duration: achievement.duration,
+                    repeat: Infinity,
+                    repeatType: 'mirror',
+                    ease: 'easeInOut',
+                  },
+                }}
+              >
+                <span
+                  className="font-mono mr-2"
+                  style={{ color: achievement.accent, fontFamily: 'var(--font-geist-mono, monospace)' }}
+                >
+                  *
+                </span>
+                <span className="text-[#8892a4]">{achievement.label}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
