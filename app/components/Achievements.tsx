@@ -53,26 +53,27 @@ const Achievements = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h2 className="font-display text-4xl md:text-5xl text-[#dde4f0] mb-6">
-            Proof beyond<br />
-            <span className="italic text-[#1dd6c5]">job titles.</span>
+            Proof, not job titles.
           </h2>
           <p className="text-[#8892a4] text-base md:text-lg leading-relaxed">
             The through-line is delivery: build useful things, put them in front of people, and keep improving the systems around them.
           </p>
         </motion.div>
 
-        <div className="grid gap-4">
-          {impactItems.map((item, i) => {
+        <motion.div
+          className="grid gap-4"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          {impactItems.map((item) => {
             const Icon = item.icon
 
             return (
-              <motion.article
+              <article
                 key={item.title}
                 className="card p-5 md:p-6 grid grid-cols-[auto_1fr_auto] gap-5 items-start"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.55, delay: 0.15 + i * 0.1 }}
               >
                 <div
                   className="h-11 w-11 rounded-lg flex items-center justify-center"
@@ -101,10 +102,10 @@ const Achievements = () => {
                     {item.metric}
                   </p>
                 </div>
-              </motion.article>
+              </article>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

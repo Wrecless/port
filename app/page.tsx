@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { MotionConfig } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -38,24 +38,21 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#07090d] text-[#dde4f0]">
-      <Header activeSection={activeSection} />
-      <main className="container mx-auto px-4 md:px-8">
-        <motion.section
-          id="hero"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Hero />
-        </motion.section>
-        <About />
-        <Projects />
-        <Skills />
-        <Achievements />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-[#07090d] text-[#dde4f0]">
+        <Header activeSection={activeSection} />
+        <main className="container mx-auto px-4 md:px-8">
+          <section id="hero">
+            <Hero />
+          </section>
+          <About />
+          <Projects />
+          <Skills />
+          <Achievements />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }

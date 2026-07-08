@@ -89,22 +89,21 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-4">
-          {highlights.map((item, i) => (
-            <motion.div
-              key={item.title}
-              className="card p-5"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-            >
+        <motion.div
+          className="grid grid-cols-2 gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {highlights.map((item) => (
+            <div key={item.title} className="card p-5">
               <div className="mb-3">{item.icon}</div>
               <h3 className="text-sm font-semibold text-[#dde4f0] mb-1.5">{item.title}</h3>
               <p className="text-sm text-[#8892a4] leading-relaxed">{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

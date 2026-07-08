@@ -78,23 +78,21 @@ const Skills = () => {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            What I bring<br />
-            <span className="italic text-[#1dd6c5]">to the table.</span>
+            Engineering and education, side by side.
           </motion.h2>
 
-          <div className="grid gap-3">
-            {focusAreas.map((area, i) => {
+          <motion.div
+            className="grid gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: 0.18 }}
+          >
+            {focusAreas.map((area) => {
               const Icon = area.icon
 
               return (
-                <motion.div
-                  key={area.label}
-                  className="flex items-center gap-4 border-l border-white/10 pl-4"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: 0.18 + i * 0.06 }}
-                >
+                <div key={area.label} className="flex items-center gap-4 border-l border-white/10 pl-4">
                   <Icon className="w-5 h-5 text-[#1dd6c5]" />
                   <div>
                     <p className="text-xs font-mono tracking-widest uppercase text-[#5e6b7e]" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
@@ -102,25 +100,24 @@ const Skills = () => {
                     </p>
                     <p className="text-[#dde4f0]">{area.value}</p>
                   </div>
-                </motion.div>
+                </div>
               )
             })}
-          </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {skillGroups.map((group, i) => {
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          {skillGroups.map((group) => {
             const Icon = group.icon
 
             return (
-              <motion.article
-                key={group.title}
-                className="card p-5"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.45, delay: 0.15 + i * 0.06 }}
-              >
+              <article key={group.title} className="card p-5">
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div
                     className="h-10 w-10 rounded-lg flex items-center justify-center"
@@ -151,10 +148,10 @@ const Skills = () => {
                     </span>
                   ))}
                 </div>
-              </motion.article>
+              </article>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

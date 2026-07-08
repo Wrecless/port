@@ -10,7 +10,7 @@ const projects = [
     title: 'SoulSupport',
     subtitle: 'Mental Health Platform',
     description:
-      'A digital platform providing accessible mental health support through breathing exercises, meditation, sound therapy, physical exercises, and sleep hypnotherapy — designed to promote relaxation, mindfulness, and well-being.',
+      'A mental-health support platform with guided breathing, meditation, sound therapy, physical exercises, and sleep hypnotherapy. Built end-to-end with Next.js and Node.js — content structure, API integration, and deployment.',
     image: '/img_2.png',
     github: 'https://github.com/Wrecless/soul',
     demo: 'https://soulsupport.vercel.app/',
@@ -21,7 +21,7 @@ const projects = [
     title: 'Mr. Mata Learning Hub',
     subtitle: 'Computer Science Learning Hub',
     description:
-      'A classroom-friendly hub for practising computer science through focused games, including sorting algorithms, binary, logic, and computational mathematics challenges.',
+      'Built for my own classroom: focused games covering sorting algorithms, binary, logic, and computational maths — each one targeting a single concept students find hard, and used in real KS3–KS5 lessons.',
     image: '/mr-mata-learning-hub.png',
     demo: 'https://mr-mata-learning-hub.vercel.app/',
     tags: ['Next.js', 'Teaching Tools', 'Computer Science', 'Games'],
@@ -31,7 +31,7 @@ const projects = [
     title: 'Hugzy Designs',
     subtitle: 'Custom 3D Printing Website',
     description:
-      'A polished site for a custom 3D printing studio, showcasing lightboxes, portrait lamps, jewellery, fidget toys, keychains, and a custom order flow.',
+      'A production site for a custom 3D printing studio — product showcase for lightboxes, portrait lamps, and jewellery, with a custom order flow wired to a working enquiry pipeline.',
     image: '/hugzy-designs.png',
     demo: 'https://hugzydesigns.vercel.app/',
     tags: ['Next.js', 'Product Site', '3D Printing', 'Forms'],
@@ -61,19 +61,20 @@ const Projects = () => {
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Things I&apos;ve<br />
-        <span className="italic text-[#1dd6c5]">shipped.</span>
+        Built, shipped, and in use.
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
         {projects.map((project, i) => (
-          <motion.article
+          <article
             key={project.title}
             className={`card overflow-hidden group ${i === 0 ? 'md:col-span-2 lg:grid lg:grid-cols-[1.15fr_0.85fr]' : ''}`}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55, delay: 0.15 + i * 0.12 }}
           >
             {/* Image */}
             <div className={`relative overflow-hidden ${i === 0 ? 'h-64 lg:h-full lg:min-h-[24rem]' : 'h-48'}`}>
@@ -153,9 +154,9 @@ const Projects = () => {
                 </a>
               </div>
             </div>
-          </motion.article>
+          </article>
         ))}
-      </div>
+      </motion.div>
 
       <motion.div
         className="mt-8 flex justify-start"
