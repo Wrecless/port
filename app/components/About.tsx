@@ -82,7 +82,7 @@ const About = () => {
           </p>
           <p className="text-[#8892a4] leading-relaxed text-base md:text-lg">
             At Abbotsholme, I independently led the Computing provision across KS3 to A Level
-            until June 2026. I now work at Chilwell School. That responsibility sharpened
+            until June 2026. I have worked at Chilwell School since July 2026. That responsibility sharpened
             skills no degree could teach: communication, leadership, and the ability to break down complex
             ideas so anyone can grasp them. Whether in a classroom or a codebase, the goal is always the
             same: clarity, impact, and continuous improvement.
