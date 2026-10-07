@@ -13,10 +13,10 @@ const impactItems = [
     icon: School,
   },
   {
-    title: 'Public products launched',
-    metric: '4',
-    subtitle: 'live deployments',
-    desc: 'A mix of wellbeing, education, commerce, and media projects shipped as real web experiences.',
+    title: 'Public project demos',
+    metric: '5',
+    subtitle: 'public homepages',
+    desc: 'Education, wellbeing, commerce, and an AI mediation prototype — with project status made explicit.',
     accent: '#4f8ef7',
     icon: Rocket,
   },
@@ -33,7 +33,7 @@ const impactItems = [
 const Achievements = () => {
   return (
     <section id="achievements" className="relative py-24 overflow-hidden">
-      <span className="section-num">04</span>
+      <span className="section-num" aria-hidden="true" data-section="04" />
 
       <motion.div
         className="section-marker"

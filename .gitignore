@@ -39,3 +39,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env.local
+
+# Local CV validation evidence (machine-specific, regenerated)
+/docs/cv/validation-*.json
+/docs/cv/*-extracted.txt
+/docs/cv/__pycache__/

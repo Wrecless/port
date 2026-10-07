@@ -47,7 +47,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
-      <span className="section-num">05</span>
+      <span className="section-num" aria-hidden="true" data-section="05" />
 
       <motion.div
         className="section-marker"
@@ -115,7 +115,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form method="post" action="/api/contact" onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
             <label htmlFor="name" className="block text-xs font-mono tracking-widest uppercase text-[#5e6b7e] mb-2" style={{ fontFamily: 'var(--font-geist-mono, monospace)' }}>
               Name

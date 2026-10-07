@@ -7,21 +7,30 @@ import Link from 'next/link'
 
 const projects = [
   {
-    title: 'SoulSupport',
-    subtitle: 'Mental Health Platform',
+    title: 'Python Quest',
+    subtitle: 'Interactive Python Learning',
     description:
-      'A mental-health support platform with guided breathing, meditation, sound therapy, physical exercises, and sleep hypnotherapy. Built end-to-end with Next.js and Node.js — content structure, API integration, and deployment.',
-    image: '/img_2.png',
-    github: 'https://github.com/Wrecless/soul',
-    demo: 'https://soulsupport.vercel.app/',
-    tags: ['Next.js', 'Node.js', 'Tailwind CSS', 'API'],
+      'A browser-based Python adventure with 28 quest steps, a CodeMirror editor, and real Python execution through Pyodide. Step-by-step replays and targeted feedback help learners connect code with what it does.',
+    image: '/python-quest.png',
+    demo: 'https://python-quest-ruby.vercel.app/',
+    tags: ['Next.js', 'TypeScript', 'Pyodide', 'Testing'],
     accent: '#1dd6c5',
+  },
+  {
+    title: 'Couples Mediation',
+    subtitle: 'Local-AI Mediation Prototype',
+    description:
+      'A full-stack prototype for structured two-person conversations, built with Next.js, Prisma, Supabase, and a locally hosted Ollama model. Long uploads are read in resumable sections. Under active development; not a clinical service or an end-to-end encrypted product.',
+    image: '/couples-mediation.png',
+    demo: 'https://couples-therapy-eight.vercel.app/',
+    tags: ['Next.js', 'Prisma', 'Supabase', 'Ollama'],
+    accent: '#9b87f5',
   },
   {
     title: 'Mr. Mata Learning Hub',
     subtitle: 'Computer Science Learning Hub',
     description:
-      'Built for my own classroom: focused games covering sorting algorithms, binary, logic, and computational maths — each one targeting a single concept students find hard, and used in real KS3–KS5 lessons.',
+      'Built for my classroom: nine focused games across algorithms, binary, logic, computational maths, and networking. Each activity makes a difficult computer science concept easier to practise.',
     image: '/mr-mata-learning-hub.png',
     demo: 'https://mr-mata-learning-hub.vercel.app/',
     tags: ['Next.js', 'Teaching Tools', 'Computer Science', 'Games'],
@@ -31,18 +40,29 @@ const projects = [
     title: 'Hugzy Designs',
     subtitle: 'Custom 3D Printing Website',
     description:
-      'A production site for a custom 3D printing studio — product showcase for lightboxes, portrait lamps, and jewellery, with a custom order flow wired to a working enquiry pipeline.',
+      'A public site for a custom 3D printing studio: product pages for lightboxes, portrait lamps, jewellery, and practical prints, with a custom enquiry flow and a linked ready-made storefront.',
     image: '/hugzy-designs.png',
     demo: 'https://hugzydesigns.vercel.app/',
     tags: ['Next.js', 'Product Site', '3D Printing', 'Forms'],
     accent: '#f7b955',
+  },
+  {
+    title: 'SoulSupport',
+    subtitle: 'Wellbeing Resources',
+    description:
+      'A wellbeing resource site with guided breathing, meditation, movement, sound, and support signposting. Built with Next.js and Node.js; a resource project, not a substitute for professional care.',
+    image: '/img_2.png',
+    github: 'https://github.com/Wrecless/soul',
+    demo: 'https://soulsupport.vercel.app/',
+    tags: ['Next.js', 'Node.js', 'Tailwind CSS', 'API'],
+    accent: '#1dd6c5',
   },
 ]
 
 const Projects = () => {
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
-      <span className="section-num">02</span>
+      <span className="section-num" aria-hidden="true" data-section="02" />
 
       <motion.div
         className="section-marker"

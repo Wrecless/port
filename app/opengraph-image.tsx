@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
             <span style={{ color: "#1dd6c5", marginLeft: 30 }}>Mata.</span>
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#8892a4", marginTop: 20 }}>
-            CS Educator · Full-Stack Developer · Head of Department
+            CS Educator · Full-Stack Developer · Learning Tools
           </div>
         </div>
 

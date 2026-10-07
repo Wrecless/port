@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Muted text stays readable on both dark page and card surfaces. */
+@layer utilities {
+  .text-\[\#5e6b7e\], .text-\[\#3d4a5a\], .text-\[\#4a5568\] {
+    color: #96a3b8;
+  }
+}
+
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -79,6 +87,11 @@ body::before {
   letter-spacing: -0.04em;
 }
 
+/* Purely decorative; actual section headings carry the semantics. */
+.section-num::after {
+  content: attr(data-section);
+}
+
 /* Tag hover glow */
 .tag-tech:hover {
   border-color: rgba(29, 214, 197, 0.6) !important;
@@ -125,5 +138,5 @@ body::before {
 }
 
 .field-input::placeholder {
-  color: #3d4a5a;
+  color: #96a3b8;
 }

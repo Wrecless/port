@@ -25,12 +25,16 @@ const dmSerif = DM_Serif_Display({
 
 const title = "Bruno Mata — CS Educator & Full-Stack Developer";
 const description =
-  "Computer Science teacher, Head of Department, and full-stack developer. BSc First Class Honours. Open to IT and education opportunities.";
+  "Full-stack developer and qualified Computing educator. Explore Python Quest, classroom games, business websites, and local-AI prototypes.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://brunomata.vercel.app'),
+  alternates: { canonical: '/' },
   title,
   description,
   openGraph: {
+    url: 'https://brunomata.vercel.app',
+    locale: 'en_GB',
     title,
     description,
     type: "website",

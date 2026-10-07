@@ -19,7 +19,7 @@ const highlights = [
       </svg>
     ),
     title: 'CS Education',
-    desc: 'Making complex concepts click. Head of Department in year one.',
+    desc: 'Making complex concepts click. Previously led sole Computing provision across KS3–KS5.',
   },
   {
     icon: (
@@ -44,7 +44,7 @@ const highlights = [
 const About = () => {
   return (
     <section id="about" className="relative py-24 overflow-hidden">
-      <span className="section-num">01</span>
+      <span className="section-num" aria-hidden="true" data-section="01" />
 
       <motion.div
         className="section-marker"
@@ -81,8 +81,8 @@ const About = () => {
             the same mindset: build something that actually works and makes a difference.
           </p>
           <p className="text-[#8892a4] leading-relaxed text-base md:text-lg">
-            In my first year of teaching, I was appointed Head of Department — leading curriculum design,
-            strategic planning, and the entire CS provision from day one. That responsibility sharpened
+            At Abbotsholme, I independently led the Computing provision across KS3 to A Level
+            until June 2026. I now work at Chilwell School. That responsibility sharpened
             skills no degree could teach: communication, leadership, and the ability to break down complex
             ideas so anyone can grasp them. Whether in a classroom or a codebase, the goal is always the
             same: clarity, impact, and continuous improvement.
