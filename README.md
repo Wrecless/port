@@ -1,75 +1,137 @@
-# Bruno Mata — portfolio
+# Bruno Mata — Portfolio
 
-Live: https://brunomata.vercel.app (the GitHub repository homepage alias is stale).
+Personal portfolio for my software development, computing education and applied local-AI work.
 
-## Verified local workflow
+**Live website:** [brunomata.vercel.app](https://brunomata.vercel.app)
 
-This repo uses **npm** and `package-lock.json`.
+**Repository:** [Wrecless/port](https://github.com/Wrecless/port)
+
+## Featured projects
+
+| Project | Focus | Live site |
+| --- | --- | --- |
+| **Python Quest** | Browser-based Python learning with Pyodide, CodeMirror, guided quests and automated checks | [Open Python Quest](https://python-quest-ruby.vercel.app) |
+| **Couples Mediation** | Structured two-person conversations with local Ollama integration and resumable upload reading; a non-clinical prototype under development | [Open prototype](https://couples-therapy-eight.vercel.app) |
+| **Mr. Mata Learning Hub** | Computer science games covering algorithms, binary, logic, maths and networking | [Open Learning Hub](https://mr-mata-learning-hub.vercel.app) |
+| **Hugzy Designs** | Custom 3D-printing showcase, product pages, enquiry flow and linked SumUp storefront | [Open Hugzy Designs](https://hugzydesigns.vercel.app) |
+| **SoulSupport** | Non-clinical wellbeing resources and support signposting | [Open SoulSupport](https://soulsupport.vercel.app) |
+
+Screenshots are stored in `public/`. Private project repositories are not exposed as public source links. Couples Mediation is not a clinical service or an end-to-end encrypted product; local AI inference does not mean its application storage is fully local.
+
+## CV downloads
+
+- [Software / full-stack CV](https://brunomata.vercel.app/Bruno-Mata-Software-CV.pdf)
+- [Computing teaching / curriculum leadership CV](https://brunomata.vercel.app/Bruno-Mata-Teaching-CV.pdf)
+
+Both PDFs are two pages, exported from the editable Word documents in [`docs/cv/`](docs/cv/). `/Profile.pdf` remains a byte-identical compatibility copy of the software CV.
+
+See the [CV documentation](docs/cv/README.md) for editable files and regeneration instructions. The current Chilwell role's exact start date and job title remain unconfirmed and are intentionally not invented.
+
+## Technology
+
+- Next.js 15 App Router, React 18 and TypeScript
+- Tailwind CSS 3, Framer Motion and Lucide icons
+- Nodemailer for the contact endpoint
+- Playwright and axe-core for browser regression and automated accessibility checks
+- Vercel deployment through GitHub
+
+Use **npm** with the committed **`package-lock.json`**. Do not introduce a second package-manager lockfile.
+
+## Local development
+
+Prerequisites: a compatible Node.js installation and npm. Local release verification used Node.js 26; check dependency requirements when choosing another runtime.
 
 ```bash
+git clone https://github.com/Wrecless/port.git
+cd port
 npm ci
+npm run dev -- --hostname 127.0.0.1 --port 3017
+```
+
+Open [http://127.0.0.1:3017](http://127.0.0.1:3017). Loopback binding keeps the development server off the local network.
+
+### Production-build verification
+
+```bash
 npm run lint
 npm run build
 npm run typecheck
 npm run start -- --hostname 127.0.0.1 --port 3017
-# In another terminal:
+```
+
+Run the first build before standalone type checking so Next.js can generate its route types. In a second terminal:
+
+```bash
 npm test
 ```
 
-Browser tests use installed Google Chrome. Set `BROWSER_CHANNEL=chromium` after `npx playwright install chromium` if needed. `BASE_URL` can select another local port. Tests cover current project order, mobile CV visibility, WCAG checks, both page layouts, crawl metadata and malformed contact requests. They do not send emails.
-
-- Project copy: `app/components/Projects.tsx`; public screenshot assets: `public/`.
-- Downloads: `/Bruno-Mata-Software-CV.pdf` and `/Bruno-Mata-Teaching-CV.pdf`.
-- `/Profile.pdf` is the software-CV compatibility path.
-- Editable CVs/regeneration sources: `docs/cv/`.
-- Chilwell's exact start date/title were not provided. Do not invent them.
-- Couples Mediation is a prototype, not a clinical service or an end-to-end encrypted product. Private source repositories are not linked publicly.
-
-## Operational boundaries
-
-SMTP uses private `EMAIL_USER`, `EMAIL_PASS`, and optional `CONTACT_EMAIL`. Missing SMTP configuration triggers the client email-draft fallback. Actual email delivery remains untested. Form POST avoids personal data in GET query strings before hydration. Do not commit secrets.
-
-Next.js and Nodemailer were updated locally. Remaining npm advisories require separate triage: production flags Next.js via bundled PostCSS; the full tree also flags development tooling. No user-supplied CSS is processed by this project, but this does not establish that every advisory is inapplicable. Do not force Next.js/Tailwind major upgrades with `npm audit fix --force`. Contact spam protection/rate limiting remains follow-up work.
-
-Publication requires explicit approval. Before any push/merge, verify the target GitHub branch and Vercel deployment; after deployment, read back the exact production commit and public CV downloads. Repository homepage/account changes and production mail tests require their own scope.
-
----
-
-## Original scaffold reference
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+The browser smoke test expects `http://127.0.0.1:3017` and uses installed Google Chrome by default. If Chrome is unavailable:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx playwright install chromium
+BROWSER_CHANNEL=chromium npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set `BASE_URL` to test another local port. These environment-variable examples use Bash syntax; adapt them for your shell.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Test coverage:** featured project order/status, private source-link exclusion, mobile CV visibility, both page layouts, automated WCAG checks, horizontal overflow, canonical/crawl metadata, malformed contact requests, skills and social-preview wording. Tests do not send an email. PDF response types, byte equality and image rendering were verified separately during the release; they are not yet fully covered by the smoke suite. Automated checks are not a complete accessibility certification.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Repository guide
 
-## Learn More
+| Path | Purpose |
+| --- | --- |
+| `app/page.tsx` | Portfolio page and section navigation |
+| `app/components/` | Hero, about, projects, skills, impact and contact sections |
+| `app/more-projects/` | Classroom-tools page |
+| `app/layout.tsx` | Site metadata, fonts and shared layout |
+| `app/opengraph-image.tsx` | Generated social-sharing image |
+| `app/robots.ts`, `app/sitemap.ts` | Crawl configuration |
+| `app/api/contact/route.ts` | Contact-email endpoint |
+| `app/api/send-email/route.ts` | Compatibility alias for the contact endpoint |
+| `public/` | Project screenshots, profile image and public CV PDFs |
+| `tests/portfolio-smoke.mjs` | Browser regression checks |
+| `docs/cv/` | Editable CVs, structured content and Word/PDF generator |
 
-To learn more about Next.js, take a look at the following resources:
+## Contact email configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set these in a private `.env.local` file or the deployment environment:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Purpose |
+| --- | --- |
+| `EMAIL_USER` | Gmail SMTP account |
+| `EMAIL_PASS` | SMTP authentication secret, such as an app password |
+| `CONTACT_EMAIL` | Optional recipient override |
 
-## Deploy on Vercel
+Do not commit credentials. The hydrated form sends JSON to `/api/contact`; if the request fails or SMTP is not configured, the client opens an email draft. Visitors must send that draft themselves—it is not proof of delivery. The form requires JavaScript for this flow and declares POST to avoid personal data in GET query strings before hydration.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Actual production SMTP delivery remains unverified.** Spam protection and rate limiting remain follow-up work.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment and release status
+
+Production: [brunomata.vercel.app](https://brunomata.vercel.app). GitHub production branch: **`master`**. The old `port-ten-black.vercel.app` repository homepage setting is stale and is not the live portfolio address.
+
+The portfolio/CV refresh was published through [PR #2](https://github.com/Wrecless/port/pull/2), application commit [`bb4f8db`](https://github.com/Wrecless/port/commit/bb4f8db77ca1b44bed62e73cfaea741acee554c4), on **7 October 2026**:
+
+- Vercel preview and production builds succeeded for their exact commits.
+- Local build, lint, type checks and browser regressions passed.
+- Browser regressions also passed against the public production alias.
+- Both named CV downloads and `/Profile.pdf` returned matching PDF bytes.
+- Python Quest's image was verified in live desktop and mobile screenshots.
+
+Vercel preview pages are sign-in protected. Build success does not replace public-site verification. Before publishing, compare GitHub with the live application, let the branch preview build succeed, then merge and verify production. Publishing, account changes and production mail tests require explicit approval.
+
+## Known follow-up work
+
+- Confirm the current Chilwell role's exact title and start date.
+- Verify SMTP delivery and add contact abuse controls.
+- Triage remaining dependency advisories, including Next.js's bundled PostCSS and development tooling. No user-supplied CSS is processed here, but that does not establish that every advisory is inapplicable.
+- Extend download/image regression coverage and make CV regeneration fully atomic.
+
+Run fresh audits rather than relying on historical counts:
+
+```bash
+npm audit --omit=dev
+npm audit
+```
+
+Do not use `npm audit fix --force` to introduce an unreviewed Next.js or Tailwind major upgrade.
