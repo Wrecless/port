@@ -40,7 +40,5 @@ yarn-error.log*
 next-env.d.ts
 .env.local
 
-# Local CV validation evidence (machine-specific, regenerated)
-/docs/cv/validation-*.json
-/docs/cv/*-extracted.txt
-/docs/cv/__pycache__/
+# Private CV working files; only finished PDFs are published
+/docs/cv/

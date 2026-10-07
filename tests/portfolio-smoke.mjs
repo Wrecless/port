@@ -22,8 +22,16 @@ try {
  const box=await software.boundingBox();
  assert.ok(box.y+box.height<=844,'Software CV must be fully visible without scrolling on a phone');
  assert.doesNotMatch(await page.locator('#hero').innerText(),/PORTFOLIO · 2025|CS Educator & Head of Department/);
- assert.match(await page.locator('#about').innerText(),/Chilwell/);
- console.log('PASS: current career copy and role-specific mobile-visible CV buttons');
+ assert.match(await page.locator('#about').innerText(),/Chilwell School since July 2026/,'Show the confirmed start of the current position');
+ for (const filename of ['Bruno-Mata-Software-CV.pdf','Bruno-Mata-Teaching-CV.pdf','Profile.pdf']) {
+  const download = await page.request.get(base+'/'+filename);
+  assert.equal(download.status(),200,`CV download: ${filename}`);
+  assert.match(download.headers()['content-type'],/^application\/pdf\b/);
+  assert.deepEqual(await download.body(),await readFile(new URL('../public/'+filename,import.meta.url)),`Published CV must match the verified artifact: ${filename}`);
+ }
+ assert.deepEqual(await readFile(new URL('../public/Profile.pdf',import.meta.url)),await readFile(new URL('../public/Bruno-Mata-Software-CV.pdf',import.meta.url)),'Legacy CV must match the software CV');
+ assert.match(await page.locator('footer').innerText(),/All rights reserved/);
+ console.log('PASS: current career dates, matching CV downloads, rights notice and mobile-visible CV buttons');
  for (const path of ['/','/more-projects']) {
   for (const width of [390,1366]) {
    await page.setViewportSize({width,height:width===390?844:900});
