@@ -14,7 +14,16 @@ const escapeHtml = (value: string) =>
         .replace(/'/g, '&#39;')
 
 export async function POST(req: Request) {
-    const body = await req.json()
+    let body: Record<string, unknown>
+    try {
+        const parsed = await req.json()
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+            return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+        }
+        body = parsed
+    } catch {
+        return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 })
+    }
     const name = String(body.name ?? '').trim()
     const email = String(body.email ?? '').trim()
     const message = String(body.message ?? '').trim()

@@ -30,7 +30,14 @@ const skillGroups = [
     level: 'Daily practice',
     icon: GitBranch,
     accent: '#9b87f5',
-    skills: ['GitHub', 'Vercel', 'Docker', 'CI checks'],
+    skills: ['GitHub', 'Vercel', 'Docker', 'Vitest', 'Playwright'],
+  },
+  {
+    title: 'Local AI & Data',
+    level: 'Applied projects',
+    icon: Database,
+    accent: '#9b87f5',
+    skills: ['Ollama', 'Prisma', 'Drizzle', 'PostgreSQL'],
   },
   {
     title: 'Curriculum Design',
@@ -57,7 +64,7 @@ const focusAreas = [
 const Skills = () => {
   return (
     <section id="skills" className="relative py-24 overflow-hidden">
-      <span className="section-num">03</span>
+      <span className="section-num" aria-hidden="true" data-section="03" />
 
       <motion.div
         className="section-marker"

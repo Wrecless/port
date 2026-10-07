@@ -47,7 +47,7 @@ function shuffled(): number[] {
 }
 
 const roles = [
-  'CS Educator & Head of Department',
+  'Computing Educator',
   'Full-Stack Developer',
   'BSc Computer Science — First Class Honours',
 ]
@@ -101,7 +101,7 @@ const Hero = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 pb-12">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-20 items-center w-full max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-12 lg:gap-20 items-center w-full max-w-6xl mx-auto">
 
         {/* Text content */}
         <div className="md:col-span-3 order-2 md:order-1">
@@ -111,7 +111,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="section-marker mb-0">PORTFOLIO &middot; 2025</p>
+            <p className="section-marker mb-0">EDUCATION &middot; SOFTWARE</p>
             <span
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono"
               style={{
@@ -206,14 +206,21 @@ const Hero = () => {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="/Profile.pdf"
+                href="/Bruno-Mata-Software-CV.pdf"
                 download
                 className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#1dd6c5] text-[#07090d] font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-[#16c4b7] hover:shadow-[0_0_24px_rgba(29,214,197,0.35)]"
               >
-                Download CV
+                Software CV
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
+              </a>
+              <a
+                href="/Bruno-Mata-Teaching-CV.pdf"
+                download
+                className="inline-flex items-center gap-2.5 px-6 py-3 border border-white/20 text-[#dde4f0] font-semibold text-sm rounded-lg hover:border-[#1dd6c5] transition-colors duration-200"
+              >
+                Teaching CV
               </a>
               <a
                 href="#contact"
@@ -248,7 +255,7 @@ const Hero = () => {
               }}
             />
             <div className="photo-ring" style={{ position: 'relative', zIndex: 1 }}>
-              <div className="rounded-full overflow-hidden w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 relative bg-[#0e1117]">
+              <div className="rounded-full overflow-hidden w-28 h-28 md:w-64 md:h-64 lg:w-72 lg:h-72 relative bg-[#0e1117]">
                 <Image
                   src="/2.jpg"
                   alt="Bruno Mata"
